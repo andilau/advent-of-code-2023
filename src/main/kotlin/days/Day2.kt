@@ -7,7 +7,7 @@ package days
 )
 class Day2(input: List<String>) : Puzzle {
 
-    val games = input.map { Game.from(it) }
+    private val games = input.map { Game.from(it) }
 
     override fun partOne(): Int = games.filter { it.possible() }.sumOf { it.id }
 
