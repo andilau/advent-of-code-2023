@@ -1,12 +1,17 @@
 package days
 
 @AdventOfCodePuzzle(
-    name = "Puzzle Name",
-    url = "https://adventofcode.com/2000/day/1",
-    date = Date(day = 1, year = 2000)
+    name = "Trebuchet?!",
+    url = "https://adventofcode.com/2023/day/1",
+    date = Date(day = 1, year = 2023)
 )
-class Day1(private val input: List<Int>) : Puzzle {
-    override fun partOne() = input.sum()
+class Day1(private val input: List<String>) : Puzzle {
+    override fun partOne():Int {
+        return input.map { line-> Pair(line.first { it.isDigit() }, line.last { it.isDigit() }) }
+            .map { p -> "" + p.first + p.second }
+            .map { va -> va.toInt() }.sum()
 
-    override fun partTwo() = input.foldRight(1) { element, acc -> element * acc }
+    }
+
+    override fun partTwo() = 0
 }
