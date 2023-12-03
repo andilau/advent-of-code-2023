@@ -1,5 +1,6 @@
 import days.Day1
 import days.Day2
+import days.Day3
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
@@ -15,6 +16,7 @@ class SolutionsTest {
     fun testAdventOfCode() = listOf(
         Day1(InputReader.getInputAsList(1)) to Pair(55208, 54578),
         Day2(InputReader.getInputAsList(2)) to Pair(2283, 78669),
+        Day3(InputReader.getInputAsList(3)) to Pair(527369, 73074886),
     )
         .map { (day, answers) ->
             DynamicTest.dynamicTest("${day.javaClass.simpleName} -> ${answers.first} / ${answers.second}") {
