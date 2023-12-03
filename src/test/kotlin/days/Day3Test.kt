@@ -37,8 +37,8 @@ class Day3Test {
     inner class Part2 {
 
         @Test
-        fun shouldReturnSumOfWhatPowerOfGameSets() {
-            assertThat(Day3(schematic).partTwo()).isEqualTo(2286)
+        fun shouldReturnSumOfAllGearRatios() {
+            assertThat(Day3(schematic).partTwo()).isEqualTo(467835)
         }
 
     }
