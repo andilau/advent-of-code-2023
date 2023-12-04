@@ -13,15 +13,21 @@ class Day4(private val input: List<String>) : Puzzle {
 
     override fun partOne(): Int = scratchcards.sumOf { it.points }
 
-    override fun partTwo(): Int = 0
+    override fun partTwo(): Int = scratchcards.map { it.matching }
+        .foldIndexed(List(scratchcards.size) { _ -> 1 }.toMutableList()) { ix, acc, won ->
+            (ix + 1..ix + won).forEach { acc[it] += acc[ix] }
+            acc
+        }
+        .sum()
+
 
     data class Scratchcard(val id: Int, val picked: Set<Int>, val winning: Set<Int>) {
 
+        val matching: Int
+            get() = (picked intersect winning).count()
+
         val points: Int
-            get() {
-                val count = (picked intersect winning).count()
-                return 2.toDouble().pow(count.toDouble() - 1).toInt()
-            }
+            get() = 2.toDouble().pow(matching.toDouble() - 1).toInt()
 
         companion object {
             fun from(line: String): Scratchcard {
