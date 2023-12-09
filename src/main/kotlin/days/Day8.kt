@@ -21,15 +21,15 @@ class Day8(input: List<String>) : Puzzle {
         .map { steps(it).toLong() }
         .reduce { a, b -> lcm(a, b) }
 
-    private fun steps(from: String) = next().runningFold(from) { position, direction ->
+    private fun steps(from: String) = instructions().runningFold(from) { position, direction ->
         when (direction) {
-            'L' -> routeFromTo[position]!!.first
-            'R' -> routeFromTo[position]!!.second
+            'L' -> routeFromTo.getValue(position).first
+            'R' -> routeFromTo.getValue(position).second
             else -> error("Should not happen: $direction")
         }
     }.takeWhile { !it.endsWith('Z') }.count()
 
-    private fun next() = sequence {
+    private fun instructions() = sequence {
         while (true)
             instructions.forEach { yield(it) }
     }
