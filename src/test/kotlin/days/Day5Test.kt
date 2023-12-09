@@ -60,8 +60,8 @@ class Day5Test {
     inner class Part2 {
 
         @Test
-        fun shouldReturnTotalScratchcardsYouEndUpWith() {
-            assertThat(Day5(almanac).partTwo()).isEqualTo(-1)
+        fun `What is the lowest location number that corresponds to any of the initial seed numbers`() {
+            assertThat(Day5(almanac).partTwo()).isEqualTo(46)
         }
 
     }
