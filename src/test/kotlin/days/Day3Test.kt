@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-@DisplayName("Day 2")
+@DisplayName("Day 3")
 class Day3Test {
 
     val schematic = """
