@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 @DisplayName("Day 11")
 class Day11Test {
 
-    val space = """
+    val spaceWithGalaxies = """
         ...#......
         .......#..
         #.........
@@ -26,8 +26,8 @@ class Day11Test {
     inner class Part1 {
 
         @Test
-        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxies() {
-            assertThat(Day11(space).partOne()).isEqualTo(374)
+        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded() {
+            assertThat(Day11(spaceWithGalaxies).partOne()).isEqualTo(374)
         }
 
     }
@@ -37,8 +37,11 @@ class Day11Test {
     inner class Part2 {
 
         @Test
-        fun shouldReturnSumOfShortes() {
-            assertThat(Day11(space).partTwo()).isEqualTo(2)
+        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded10Times() {
+            assertThat(Day11(spaceWithGalaxies).test(10-1)).isEqualTo(1030L)
+        }        @Test
+        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded100Times() {
+            assertThat(Day11(spaceWithGalaxies).test(100-1)).isEqualTo(8410L)
         }
 
     }
