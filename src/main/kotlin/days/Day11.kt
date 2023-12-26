@@ -11,30 +11,31 @@ class Day11(input: List<String>) : Puzzle {
 
     override fun partOne(): Int {
         return galaxies
-            .expand()
+            .expandBy()
             .uniquePairs()
             .sumOf { pair -> pair.first.distance(pair.second) }
     }
 
     override fun partTwo(): Long = galaxies
-        .expand(1000_000-1)
+        .expandBy(1000_000)
         .uniquePairs()
         .sumOf { pair -> pair.first.distance(pair.second).toLong() }
 
-    fun test(f: Int): Long = galaxies
-        .expand(f)
-        .uniquePairs()
-        .sumOf { pair -> pair.first.distance(pair.second).toLong() }
+    fun sumOfTheShortestPathsBetweenAllGalaxiesExpanded(times: Int): Long =
+        galaxies
+            .expandBy(times)
+            .uniquePairs()
+            .sumOf { pair -> pair.first.distance(pair.second).toLong() }
 
 }
 
-private fun List<Point>.expand(factor: Int = 1): List<Point> {
-    val emptyX = (0..maxOf { it.x }) - map { it.x }.toSet()
-    val emptyY = (0..maxOf { it.y }) - map { it.y }.toSet()
-    val factorX = (0..maxOf { it.x }).map { col -> emptyX.count { it < col } }
-    val factorY = (0..maxOf { it.y }).map { row -> emptyY.count { it < row } }
+private fun List<Point>.expandBy(factor: Int = 2): List<Point> {
+    val emptyCols = (0..maxOf { it.x }) - map { it.x }.toSet()
+    val emptyRows = (0..maxOf { it.y }) - map { it.y }.toSet()
+    val xFactors = (0..maxOf { it.x }).map { col -> emptyCols.count { it < col } }
+    val yFactors = (0..maxOf { it.y }).map { row -> emptyRows.count { it < row } }
 
-    return map { (x, y) -> Point(x + factorX[x] * factor, y + factorY[y] * factor) }
+    return map { (x, y) -> Point(x + xFactors[x] * (factor - 1), y + yFactors[y] * (factor - 1)) }
 }
 
 

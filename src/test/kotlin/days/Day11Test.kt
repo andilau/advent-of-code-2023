@@ -37,11 +37,18 @@ class Day11Test {
     inner class Part2 {
 
         @Test
+        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded2Times() {
+            assertThat(Day11(spaceWithGalaxies).sumOfTheShortestPathsBetweenAllGalaxiesExpanded(2)).isEqualTo(374L)
+        }
+
+        @Test
         fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded10Times() {
-            assertThat(Day11(spaceWithGalaxies).test(10-1)).isEqualTo(1030L)
-        }        @Test
+            assertThat(Day11(spaceWithGalaxies).sumOfTheShortestPathsBetweenAllGalaxiesExpanded(10)).isEqualTo(1030L)
+        }
+
+        @Test
         fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded100Times() {
-            assertThat(Day11(spaceWithGalaxies).test(100-1)).isEqualTo(8410L)
+            assertThat(Day11(spaceWithGalaxies).sumOfTheShortestPathsBetweenAllGalaxiesExpanded(100)).isEqualTo(8410L)
         }
 
     }
