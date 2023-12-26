@@ -34,11 +34,4 @@ class Day8(input: List<String>) : Puzzle {
             instructions.forEach { yield(it) }
     }
 
-    fun lcm(one: Long, other: Long): Long =
-        (one * other) / gcd(one, other)
-
-    tailrec fun gcd(one: Long, other: Long): Long =
-        if (other == 0L) one
-        else gcd(other, one % other)
-
 }
