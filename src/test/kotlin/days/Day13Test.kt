@@ -42,8 +42,8 @@ class Day13Test {
     inner class Part2 {
 
         @Test
-        fun shouldReturnSumOfTheShortestPathsBetweenAllGalaxiesExpanded2Times() {
-            assertThat(Day11(patterns).sumOfTheShortestPathsBetweenAllGalaxiesExpanded(2)).isEqualTo(374L)
+        fun `What number do you get after summarizing the new reflection line in each pattern in your notes`() {
+            assertThat(Day13(patterns).partTwo()).isEqualTo(400)
         }
 
     }

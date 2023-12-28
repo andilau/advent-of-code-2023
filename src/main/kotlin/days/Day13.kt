@@ -7,7 +7,7 @@ package days
 )
 class Day13(input: List<String>) : Puzzle {
 
-    private val patterns = input.fold(mutableListOf(mutableListOf<String>())) { acc, line ->
+    private val patterns: MutableList<MutableList<String>> = input.fold(mutableListOf(mutableListOf<String>())) { acc, line ->
         if (line.isBlank()) {
             acc.add(mutableListOf())
         } else {
@@ -19,27 +19,32 @@ class Day13(input: List<String>) : Puzzle {
     override fun partOne(): Int =
         patterns.sumOf { verticalMirror(it) * 100 + horizontalMirror(it) }
 
-    private fun verticalMirror(pattern: List<String>): Int {
+    override fun partTwo(): Int =
+        patterns.sumOf { verticalMirror(it, 1) * 100 + horizontalMirror(it, 1) }
+
+    private fun verticalMirror(pattern: List<String>, diff :Int = 0): Int {
         return (1..pattern.lastIndex).firstNotNullOfOrNull { iy ->
             val top = pattern.subList(0, iy)
             val bottom = pattern.subList(iy, pattern.lastIndex + 1)
 
-            if (top.reversed().zip(bottom).all { it.first == it.second })
+            if (top.reversed().zip(bottom)
+                    .sumOf { pair -> pair.first.indices.count { pair.first[it] != pair.second[it] } } == diff
+            )
                 iy else null
         } ?: 0
     }
 
-    private fun horizontalMirror(pattern: List<String>): Int {
+    private fun horizontalMirror(pattern: List<String>, diff: Int = 0): Int {
         return (1..pattern.first().lastIndex).firstNotNullOfOrNull { ix ->
             val left = (0..<ix).map { x -> pattern.map { line -> line[x] }.joinToString("") }
             val right = (ix..pattern.first().lastIndex).map { x -> pattern.map { line -> line[x] }.joinToString("") }
 
-            if (left.reversed().zip(right).all { it.first == it.second })
+            if (left.reversed().zip(right)
+                    .sumOf { pair -> pair.first.indices.count { pair.first[it] != pair.second[it] } } == diff
+            )
                 ix else null
         } ?: 0
 
     }
-
-    override fun partTwo(): Int = 0
 
 }
