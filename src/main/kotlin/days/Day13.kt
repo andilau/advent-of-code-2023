@@ -10,10 +10,10 @@ class Day13(input: List<String>) : Puzzle {
     private val patterns: List<List<String>> = extractPatterns(input)
 
     override fun partOne(): Int =
-        patterns.sumOf { verticalMirror(it) * 100 + horizontalMirror(it) }
+        patterns.sumOf { pattern -> 100 * pattern.verticalMirror() + pattern.horizontalMirror() }
 
     override fun partTwo(): Int =
-        patterns.sumOf { verticalMirror(it, 1) * 100 + horizontalMirror(it, 1) }
+        patterns.sumOf { pattern -> 100 * pattern.verticalMirror(1) + pattern.horizontalMirror(1) }
 
     private fun extractPatterns(input: List<String>) =
         input.fold(mutableListOf(mutableListOf<String>())) { acc, line ->
@@ -25,20 +25,20 @@ class Day13(input: List<String>) : Puzzle {
             acc
         }
 
-    private fun verticalMirror(pattern: List<String>, diff: Int = 0): Int =
-        (1..pattern.lastIndex).firstNotNullOfOrNull { iy ->
-            val top = pattern.subList(0, iy)
-            val bottom = pattern.subList(iy, pattern.lastIndex + 1)
+    private fun List<String>.verticalMirror(difference: Int = 0): Int =
+        (1..lastIndex).firstNotNullOfOrNull { iy ->
+            val top = subList(0, iy)
+            val bottom = subList(iy, lastIndex + 1)
 
-            if (top.reversed().zip(bottom)
-                    .sumOf { pair -> pair.first.indices.count { pair.first[it] != pair.second[it] } } == diff
-            )
-                iy else null
+            top.reversed().zip(bottom)
+                .sumOf { pair -> pair.first.indices.count { pair.first[it] != pair.second[it] } }
+                .let { if (it == difference) iy else null }
         } ?: 0
 
-    private fun horizontalMirror(pattern: List<String>, diff: Int = 0): Int =
-        verticalMirror(pattern.transpose(), diff)
+    private fun List<String>.horizontalMirror(difference: Int = 0): Int =
+        transpose().verticalMirror(difference)
 
     private fun List<String>.transpose(): List<String> =
         first().indices.map { x -> this.map { line -> line[x] }.joinToString("") }
+
 }
