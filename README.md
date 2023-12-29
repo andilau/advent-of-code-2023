@@ -14,6 +14,7 @@ Based on [aoc-kotlin-starter](https://github.com/hughjdavey/aoc-kotlin-starter) 
 - Day 8: 🗺️️ [Haunted Wasteland](https://adventofcode.com/2023/day/8) -- [Day8.kt](https://github.com/andilau/advent-of-code-2023/blob/main/src/main/kotlin/days/Day8.kt)
 - Day 9: 🛠️ [Mirage Maintenance](https://adventofcode.com/2023/day/9) -- [Day9.kt](https://github.com/andilau/advent-of-code-2023/blob/main/src/main/kotlin/days/Day9.kt)
 - Day 11: ✨️ [Cosmic Expansion](https://adventofcode.com/2023/day/11) -- [Day11.kt](https://github.com/andilau/advent-of-code-2023/blob/main/src/main/kotlin/days/Day11.kt)
+- Day 13: 🪞 [Point of Incidence](https://adventofcode.com/2023/day/13) -- [Day13.kt](https://github.com/andilau/advent-of-code-2023/blob/main/src/main/kotlin/days/Day13.kt)
 
 ### Features
 
