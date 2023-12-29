@@ -1,4 +1,4 @@
-# Advent of Code Starter
+# Advent of Code 2023
 
 Starter template for solving [Advent of Code](https://adventofcode.com/) in [Kotlin](https://kotlinlang.org/). 
 Advent of Code is an Advent calendar of small programming puzzles by [Eric Wastl](http://was.tl/). 
