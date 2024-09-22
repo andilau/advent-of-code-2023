@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 9 * * SUN"
 
+permissions:
+  pull-requests: write
+
 jobs:
   update-gradle-wrapper:
     runs-on: ubuntu-latest
