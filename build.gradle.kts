@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "2.1.0"
+    kotlin("jvm") version "2.1.10"
 }
 
 application {
@@ -18,12 +18,21 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
     implementation("org.reflections:reflections:0.10.2")
-    implementation("org.slf4j:slf4j-nop:2.0.9")
+    implementation("org.slf4j:slf4j-nop:2.0.17")
 
-    testApi("org.junit.jupiter:junit-jupiter-engine:5.10.1")
-    testImplementation("org.assertj:assertj-core:3.24.2")
+    testApi("org.junit.jupiter:junit-jupiter-engine:5.11.4")
+    testImplementation("org.assertj:assertj-core:3.27.3")
+}
+
+kotlin {
+    jvmToolchain(17)
+    sourceSets.all {
+        languageSettings {
+            languageVersion = "2.0"
+        }
+    }
 }
 
 kotlin {
