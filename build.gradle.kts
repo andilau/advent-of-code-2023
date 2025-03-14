@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "2.1.0"
 }
 
 application {
@@ -26,12 +26,25 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
+kotlin {
+    jvmToolchain(17)
+    sourceSets.all {
+        languageSettings {
+            languageVersion = "2.0"
+        }
+    }
+}
+
 tasks {
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
         kotlinOptions.freeCompilerArgs = listOf("-Xjsr305=strict")
     }
-    test {
-        useJUnitPlatform()
+}
+
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
     }
 }
