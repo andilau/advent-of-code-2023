@@ -10,12 +10,8 @@ updates:
     schedule:
       interval: weekly
       day: saturday
-    reviewers:
-      - "andilau"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: weekly
       day: saturday
-    reviewers:
-      - "andilau"
