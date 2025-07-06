@@ -28,16 +28,13 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
+    compilerOptions {
+        freeCompilerArgs.set(listOf("-Xjsr305=strict"))
+    }
     sourceSets.all {
         languageSettings {
             languageVersion = "2.0"
         }
-    }
-}
-
-tasks {
-    withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }
 
