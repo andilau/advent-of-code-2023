@@ -17,4 +17,4 @@ updates:
       day: saturday
     groups:
       all-actions:
-        pattern: "*"
+        patterns: ["*"]
